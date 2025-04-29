@@ -1,0 +1,28 @@
+{
+  "name": "Ubuntu",
+  "image": "mcr.microsoft.com/devcontainers/python",
+  "runArgs": ["--env-file", ".env"],
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {}
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "ms-vscode.vscode-typescript-next"
+      ],
+      "settings": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+      }
+    }
+  },
+  "postCreateCommand": "/workspaces/mds-fest/.devcontainer/init-claude-config.sh",
+  "forwardPorts": [3000],
+  "remoteUser": "vscode"
+}
