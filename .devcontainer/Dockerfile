@@ -14,8 +14,12 @@ RUN apt-get autoremove -y \
     && rm -rf /var/lib/apt/lists/*
 
 RUN pipx install uvx
-RUN pipx install dbt-core dbt-postgres
+# Install dbt globally using pip instead of pipx
+RUN pip install dbt-core dbt-postgres
 RUN /bin/bash -c "$(curl -fsSL https://steampipe.io/install/steampipe.sh)"
+
+# Make sure the global bin directory is in PATH for all users
+ENV PATH="/usr/local/bin:${PATH}"
 
 # Set the default shell to bash rather than sh
 ENV SHELL /bin/bash

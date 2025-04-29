@@ -1,11 +1,15 @@
 #!/bin/bash
 
-# Script to copy .claude.json.tmpl to ~/.claude.json and replace the API key
+# Script to:
+# 1. Copy .claude.json.tmpl to ~/.claude.json and replace the API key
+# 2. Create ~/.gitconfig with user info from environment variables
 # Must be run on devcontainer launch
 
 TEMPLATE_PATH="/workspaces/mds-fest/.devcontainer/.claude.json.tmpl"
 TARGET_PATH="${HOME}/.claude.json"
+GITCONFIG_PATH="${HOME}/.gitconfig"
 
+# Setup Claude config
 if [ -z "${ANTHROPIC_API_KEY}" ]; then
     echo "Error: ANTHROPIC_API_KEY environment variable is not set."
     exit 1
@@ -23,3 +27,31 @@ cat "${TEMPLATE_PATH}" | sed "s/<ANTHROPIC_API_KEY>/${ANTHROPIC_API_KEY}/g" > "$
 chmod 600 "${TARGET_PATH}"
 
 echo "Successfully created ${TARGET_PATH} with your API key."
+
+# Setup Git config
+if [ -z "${GIT_USER_NAME}" ] || [ -z "${GIT_USER_EMAIL}" ]; then
+    echo "Warning: GIT_USER_NAME or GIT_USER_EMAIL environment variables are not set."
+    echo "Git user configuration will not be updated."
+else
+    # Create or update .gitconfig with user info
+    cat > "${GITCONFIG_PATH}" << EOF
+[user]
+	name = ${GIT_USER_NAME}
+	email = ${GIT_USER_EMAIL}
+
+[core]
+	editor = code
+	autocrlf = input
+
+[pull]
+	rebase = false
+
+[init]
+	defaultBranch = main
+
+[color]
+	ui = auto
+EOF
+
+    echo "Successfully created ${GITCONFIG_PATH} with your Git user information."
+fi
