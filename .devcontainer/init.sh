@@ -55,3 +55,17 @@ EOF
 
     echo "Successfully created ${GITCONFIG_PATH} with your Git user information."
 fi
+steampipe plugin install linkedin
+steampipe plugin install hackernews
+
+steampipe service start --show-password > nohup.out
+cat nohup.out
+echo "Successfully starting steampipe"
+
+# Only run DuckDB commands if the database file doesn't exist
+if [ ! -f "duckdb.duckdb" ]; then
+    echo "INSTALL tpcds; LOAD tpcds; CALL dsdgen(sf = 1);" | duckdb duckdb.duckdb
+    echo "Successfully created DuckDB database with TPC-DS data"
+else
+    echo "DuckDB database already exists, skipping TPC-DS data generation"
+fi

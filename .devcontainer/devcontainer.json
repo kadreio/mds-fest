@@ -10,14 +10,18 @@
     },
     "ghcr.io/devcontainers/features/git:1": {},
     "ghcr.io/anthropics/devcontainer-features/claude-code:1.0": {},
-    "ghcr.io/devcontainers/features/github-cli:1": {}
+    "ghcr.io/devcontainers/features/github-cli:1": {},
+    "ghcr.io/eitsupi/devcontainer-features/duckdb-cli:1": {}
   },
   "customizations": {
     "vscode": {
       "extensions": [
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
-        "ms-vscode.vscode-typescript-next"
+        "ms-vscode.vscode-typescript-next",
+        "ms-azuretools.vscode-docker",
+        "RandomFractalsInc.duckdb-sql-tools",
+        "ms-toolsai.jupyter"
       ],
       "settings": {
         "editor.formatOnSave": true,
@@ -25,7 +29,7 @@
       }
     }
   },
-  "postCreateCommand": "/workspaces/mds-fest/.devcontainer/init-claude-config.sh",
+  "postCreateCommand": "/workspaces/mds-fest/.devcontainer/init.sh",
   "forwardPorts": [3000],
   "remoteUser": "vscode",
   "mounts": [

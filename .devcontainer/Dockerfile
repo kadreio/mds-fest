@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/devcontainers/python
+FROM mcr.microsoft.com/devcontainers/base:ubuntu
 
 # Install additional packages if needed
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
@@ -6,20 +6,24 @@ RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
     curl \
     git \
     build-essential \
-    ca-certificates
+    ca-certificates \
+    postgresql-client \
+    python3-pip
 
 # Clean up
 RUN apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pipx install uvx
+RUN pip install uvx
 # Install dbt globally using pip instead of pipx
-RUN pip install dbt-core dbt-postgres
+RUN pip install dbt-core dbt-postgres dbt-duckdb
 RUN /bin/bash -c "$(curl -fsSL https://steampipe.io/install/steampipe.sh)"
+
+
 
 # Make sure the global bin directory is in PATH for all users
 ENV PATH="/usr/local/bin:${PATH}"
 
 # Set the default shell to bash rather than sh
-ENV SHELL /bin/bash
+ENV SHELL=/bin/bash
