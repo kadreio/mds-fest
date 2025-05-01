@@ -1,3 +1,7 @@
 .env
 duckdb.duckdb
 nohup.out
+
+.jupyter_ystore.db
+**/.claude/settings.local.json
+.ipynb_checkpoints/
