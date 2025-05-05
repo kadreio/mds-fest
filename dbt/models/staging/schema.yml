@@ -1,15 +1,307 @@
 version: 2
 
 models:
-  - name: stg_example
-    description: "Example staging model"
+  - name: stg_call_center
+    description: "Call center information staging model"
     columns:
-      - name: id
+      - name: cc_call_center_sk
         description: "The primary key for this table"
         tests:
           - unique
           - not_null
-      - name: name
-        description: "Example name field"
-      - name: created_at
-        description: "Timestamp when record was created"
+      - name: cc_call_center_id
+        description: "Call center identifier"
+        tests:
+          - not_null
+
+  - name: stg_catalog_page
+    description: "Catalog page information staging model"
+    columns:
+      - name: cp_catalog_page_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_catalog_returns
+    description: "Catalog returns information staging model"
+    columns:
+      - name: cr_item_sk
+        description: "Item surrogate key"
+        tests:
+          - not_null
+      - name: cr_order_number
+        description: "Order number"
+        tests:
+          - not_null
+
+  - name: stg_catalog_sales
+    description: "Catalog sales information staging model"
+    columns:
+      - name: cs_item_sk
+        description: "Item surrogate key"
+        tests:
+          - not_null
+      - name: cs_order_number
+        description: "Order number"
+        tests:
+          - not_null
+
+  - name: stg_customer
+    description: "Customer information staging model"
+    columns:
+      - name: c_customer_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: c_customer_id
+        description: "Customer identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_customer_address
+    description: "Customer address information staging model"
+    columns:
+      - name: ca_address_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: ca_address_id
+        description: "Address identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_customer_demographics
+    description: "Customer demographics information staging model"
+    columns:
+      - name: cd_demo_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_date_dim
+    description: "Date dimension staging model"
+    columns:
+      - name: d_date_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: d_date_id
+        description: "Date identifier"
+        tests:
+          - unique
+          - not_null
+      - name: d_date
+        description: "Date value"
+        tests:
+          - not_null
+
+  - name: stg_household_demographics
+    description: "Household demographics information staging model"
+    columns:
+      - name: hd_demo_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_income_band
+    description: "Income band information staging model"
+    columns:
+      - name: ib_income_band_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_inventory
+    description: "Inventory information staging model"
+    columns:
+      - name: inv_item_sk
+        description: "Item surrogate key"
+        tests:
+          - not_null
+      - name: inv_warehouse_sk
+        description: "Warehouse surrogate key"
+        tests:
+          - not_null
+      - name: inv_date_sk
+        description: "Date surrogate key"
+        tests:
+          - not_null
+
+  - name: stg_item
+    description: "Item information staging model"
+    columns:
+      - name: i_item_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: i_item_id
+        description: "Item identifier"
+        tests:
+          - not_null
+
+  - name: stg_promotion
+    description: "Promotion information staging model"
+    columns:
+      - name: p_promo_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: p_promo_id
+        description: "Promotion identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_reason
+    description: "Reason information staging model"
+    columns:
+      - name: r_reason_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: r_reason_id
+        description: "Reason identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_ship_mode
+    description: "Shipping mode information staging model"
+    columns:
+      - name: sm_ship_mode_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: sm_ship_mode_id
+        description: "Shipping mode identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_store
+    description: "Store information staging model"
+    columns:
+      - name: s_store_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: s_store_id
+        description: "Store identifier"
+        tests:
+          - not_null
+
+  - name: stg_store_returns
+    description: "Store returns information staging model"
+    columns:
+      - name: sr_item_sk
+        description: "Item surrogate key"
+        tests:
+          - not_null
+      - name: sr_ticket_number
+        description: "Ticket number"
+        tests:
+          - not_null
+
+  - name: stg_store_sales
+    description: "Store sales information staging model"
+    columns:
+      - name: ss_item_sk
+        description: "Item surrogate key"
+        tests:
+          - not_null
+      - name: ss_ticket_number
+        description: "Ticket number"
+        tests:
+          - not_null
+
+  - name: stg_time_dim
+    description: "Time dimension staging model"
+    columns:
+      - name: t_time_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: t_time_id
+        description: "Time identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_warehouse
+    description: "Warehouse information staging model"
+    columns:
+      - name: w_warehouse_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: w_warehouse_id
+        description: "Warehouse identifier"
+        tests:
+          - unique
+          - not_null
+
+  - name: stg_web_page
+    description: "Web page information staging model"
+    columns:
+      - name: wp_web_page_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: wp_web_page_id
+        description: "Web page identifier"
+        tests:
+          - not_null
+
+  - name: stg_web_returns
+    description: "Web returns information staging model"
+    columns:
+      - name: wr_item_sk
+        description: "Item surrogate key"
+        tests:
+          - not_null
+      - name: wr_order_number
+        description: "Order number"
+        tests:
+          - not_null
+
+  - name: stg_web_sales
+    description: "Web sales information staging model"
+    columns:
+      - name: ws_item_sk
+        description: "Item surrogate key"
+        tests:
+          - not_null
+      - name: ws_order_number
+        description: "Order number"
+        tests:
+          - not_null
+
+  - name: stg_web_site
+    description: "Web site information staging model"
+    columns:
+      - name: web_site_sk
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: web_site_id
+        description: "Web site identifier"
+        tests:
+          - not_null

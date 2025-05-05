@@ -5,4 +5,5 @@
 select 
     1 as id,
     'example' as name,
-    current_timestamp() as created_at
+    current_localtimestamp() as created_at
+    
