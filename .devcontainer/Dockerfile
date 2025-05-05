@@ -15,16 +15,18 @@ RUN apt-get autoremove -y \
     && apt-get clean -y \
     && rm -rf /var/lib/apt/lists/*
 
+RUN pip install dbt-core dbt-postgres dbt-duckdb
+
+
 RUN pip install uvx
 RUN pip install ipykernel jupyter
 RUN pip install jupyterlab==4.4.1 jupyter-collaboration==4.0.2 ipykernel
+
 RUN pip uninstall -y pycrdt datalayer_pycrdt
 RUN pip install datalayer_pycrdt==0.12.15
-RUN pip install -U "huggingface_hub[cli]"
-# Install dbt globally using pip instead of pipx
-RUN pip install dbt-core dbt-postgres dbt-duckdb
-RUN /bin/bash -c "$(curl -fsSL https://steampipe.io/install/steampipe.sh)"
 
+RUN pip install -U "huggingface_hub[cli]"
+RUN /bin/bash -c "$(curl -fsSL https://steampipe.io/install/steampipe.sh)"
 
 
 # Make sure the global bin directory is in PATH for all users
