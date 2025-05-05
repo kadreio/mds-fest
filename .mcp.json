@@ -1,15 +1,5 @@
 {
   "mcpServers": {
-    "motherduck": {
-      "command": "uvx",
-      "args": [
-        "run",
-        "mcp-server-motherduck",
-        "--",
-        "--db-path",
-        "/workspaces/mds-fest/duckdb.duckdb"
-      ]
-    },
     "jupyter": {
       "command": "docker",
       "args": [

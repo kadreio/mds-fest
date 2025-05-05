@@ -1,0 +1,10 @@
+duckdb:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: /workspaces/mds-fest/duckdb.duckdb
+      schema: main
+      extensions:
+        - httpfs
+        - parquet

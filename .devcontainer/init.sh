@@ -62,8 +62,8 @@ steampipe service start --show-password > nohup.out
 cat nohup.out
 echo "Successfully starting steampipe"
 
-nohup jupyter lab --port 8888 --IdentityProvider.token MY_TOKEN --ip 0.0.0.0 --no-browser & > /dev/null 2>&1
-echo "Successfully started Jupyter Lab"
+# nohup jupyter lab --port 8888 --IdentityProvider.token MY_TOKEN --ip 0.0.0.0 --no-browser & > /dev/null 2>&1
+# echo "Successfully started Jupyter Lab"
 
 # Only run DuckDB commands if the database file doesn't exist
 if [ ! -f "duckdb.duckdb" ]; then

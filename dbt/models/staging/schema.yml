@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_example
+    description: "Example staging model"
+    columns:
+      - name: id
+        description: "The primary key for this table"
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Example name field"
+      - name: created_at
+        description: "Timestamp when record was created"
