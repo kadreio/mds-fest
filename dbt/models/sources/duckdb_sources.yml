@@ -1,0 +1,79 @@
+version: 2
+
+sources:
+  - name: duckdb
+    schema: main
+    description: "DuckDB database containing retail data"
+    loader: duckdb
+    tables:
+      - name: call_center
+        description: "Contains information about call centers"
+
+      - name: catalog_page
+        description: "Contains information about catalog pages"
+
+      - name: catalog_returns
+        description: "Contains information about catalog returns"
+
+      - name: catalog_sales
+        description: "Contains information about catalog sales"
+
+      - name: customer
+        description: "Contains information about customers"
+
+      - name: customer_address
+        description: "Contains customer address information"
+
+      - name: customer_demographics
+        description: "Contains demographic information about customers"
+
+      - name: date_dim
+        description: "Date dimension table"
+
+      - name: household_demographics
+        description: "Contains demographic information about households"
+
+      - name: income_band
+        description: "Contains income band information"
+
+      - name: inventory
+        description: "Contains inventory information"
+
+      - name: item
+        description: "Contains information about products/items"
+
+      - name: promotion
+        description: "Contains information about promotions"
+
+      - name: reason
+        description: "Contains reason codes and descriptions"
+
+      - name: ship_mode
+        description: "Contains shipping mode information"
+
+      - name: store
+        description: "Contains information about retail stores"
+
+      - name: store_returns
+        description: "Contains information about store returns"
+
+      - name: store_sales
+        description: "Contains information about store sales"
+
+      - name: time_dim
+        description: "Time dimension table"
+
+      - name: warehouse
+        description: "Contains information about warehouses"
+
+      - name: web_page
+        description: "Contains information about web pages"
+
+      - name: web_returns
+        description: "Contains information about web returns"
+
+      - name: web_sales
+        description: "Contains information about web sales"
+
+      - name: web_site
+        description: "Contains information about websites"
